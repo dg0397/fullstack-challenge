@@ -1,64 +1,21 @@
-import React, { Component } from 'react'
-import Button from '@material-ui/core/Button'
-import Api from '../Api'
+import React from 'react'
+import ListHeader from 'components/ListHeader'
+import Message from 'components/Message'
 
-class MessageList extends Component {
-  constructor(...args) {
-    super(...args)
-    this.state = {
-      messages: [],
-    }
-  }
-
-  api = new Api({
-    messageCallback: (message) => {
-      this.messageCallback(message)
-    },
-  })
-
-  componentDidMount() {
-    this.api.start()
-  }
-
-  messageCallback(message) {
-    const { messages } = this.state
-    this.setState({
-      messages: [
-        ...messages.slice(),
-        message,
-      ],
-    }, () => {
-      // Included to support initial direction. Please remove upon completion
-      console.log(messages)
-    })
-  }
-
-  renderButton() {
-    const isApiStarted = this.api.isStarted()
+const MessageList = ({messages, id, type,deleteMessage}) => {
+    const messagesToTheList = messages.filter(message => message.priority === id)
     return (
-      <Button
-        variant="contained"
-        onClick={() => {
-          if (isApiStarted) {
-            this.api.stop()
-          } else {
-            this.api.start()
-          }
-          this.forceUpdate()
-        }}
-      >
-        {isApiStarted ? 'Stop Messages' : 'Start Messages'}
-      </Button>
+        <div>
+            <ListHeader id = {id} type = {type} count = {messagesToTheList.length} />
+            {
+                messagesToTheList.map( (message,index) => {
+                    return ( 
+                        <Message id = {index} message = {message} key = {index} deleteMessage = {deleteMessage} />
+                    )
+                })
+            }
+        </div>
     )
-  }
-
-  render() {
-    return (
-      <div>
-        {this.renderButton()}
-      </div>
-    )
-  }
 }
 
 export default MessageList
