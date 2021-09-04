@@ -1,4 +1,5 @@
 import React from 'react'
+import Button from 'components/Button'
 
 const Message = ({message,deleteMessage}) => {
     const {message:text} = message
@@ -11,7 +12,7 @@ const Message = ({message,deleteMessage}) => {
     return (
         <div className = 'message' style = {{'backgroundColor' : color}}>
             <p>{text}</p>
-            <button onClick = {handleClick}>Clear</button>
+            <Button handleClick = {handleClick} text = 'Clear'/>
         </div>
     )
 }

@@ -3,9 +3,9 @@ import ListHeader from 'components/ListHeader'
 import Message from 'components/Message'
 
 const MessageList = ({messages, id, type,deleteMessage}) => {
-    const messagesToTheList = messages.filter(message => message.priority === id)
+    const messagesToTheList = messages.filter(message => message.priority === id).reverse()
     return (
-        <div>
+        <div className = 'message-list'>
             <ListHeader id = {id} type = {type} count = {messagesToTheList.length} />
             {
                 messagesToTheList.map( (message,index) => {

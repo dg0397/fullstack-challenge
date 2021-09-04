@@ -18,7 +18,7 @@ const messagesTypes = [
 
 const MessageContainer = ({messages,deleteMessage}) => {
     return (
-        <div>
+        <div id = "message-container">
             {
                 messagesTypes.map( ({id,type}) => {
                     return(

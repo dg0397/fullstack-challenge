@@ -5,6 +5,10 @@ import Api from 'api'
 import Header from 'components/Header'
 import MessageContainer from 'components/MessageContainer'
 import Notify from 'components/Notify'
+import ButtonsContainer from 'components/ButtonsContainer'
+
+import 'App.css'
+
 
 const MessageList = () => {
   const [messages,setMessages] = useState([])
@@ -19,7 +23,7 @@ const MessageList = () => {
 
   useEffect(()=>{
     if(notify){
-      setTimeout(() => setNotify(''), 10000)
+      setTimeout(() => setNotify(''), 20000000)
     }
   },[notify])
 
@@ -61,20 +65,14 @@ const MessageList = () => {
   }
   console.log(messages)
   return(
-    <div>
+    <div id = 'app-container'>
       <Header/>
-      <Button
-        variant="contained"
-        onClick={switchApp}
-      >
-        {isApiStarted ? 'Stop Messages' : 'Start Messages'}
-      </Button>
-      <Button
-      variant="contained"
-      onClick={() => setMessages([])}
-      >
-        Clear Messages
-      </Button>
+      <ButtonsContainer 
+        deleteAll = {() => setMessages([])} 
+        switchApp = {switchApp} 
+        textLeft = {isApiStarted ? 'Stop' : 'Start'}
+        textRight = 'Clear'
+      />
       <Notify message = {notify} setMessage = {setNotify}/>
       <MessageContainer messages = {messages} deleteMessage = {deleteMessage}/>
     </div>

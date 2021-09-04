@@ -1,7 +1,8 @@
 import React from 'react'
+import Button from 'components/Button'
 
 const Notify = ({message,setMessage}) => {
-    const cleatMessage = () => {
+    const clearMessage = () => {
         setMessage('')
     }
     return (
@@ -9,9 +10,9 @@ const Notify = ({message,setMessage}) => {
             {
                 message 
                 && (
-                    <div>
+                    <div id='notify'>
                         <p>{message}</p>
-                        <button onClick = {cleatMessage}>Clear</button>
+                        <Button handleClick = {clearMessage} text = 'Clear'/>
                     </div>
                 )
             }
