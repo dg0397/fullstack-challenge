@@ -1,5 +1,5 @@
 import React from 'react'
-import MessageList from 'components/MessageList'
+import MessageList from 'components/MessageList/MessageList'
 
 const messagesTypes = [
     {
@@ -16,13 +16,13 @@ const messagesTypes = [
     },
 ]
 
-const MessageContainer = ({messages,deleteMessage}) => {
+const MessageContainer = () => {
     return (
         <div id = "message-container">
             {
                 messagesTypes.map( ({id,type}) => {
                     return(
-                        <MessageList  key = {id} type = {type} messages = {messages} id = {id} deleteMessage ={deleteMessage}/>
+                        <MessageList  key = {id} type = {type}  id = {id} />
                     )
                 })
             }
