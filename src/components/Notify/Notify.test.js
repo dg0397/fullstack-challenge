@@ -1,7 +1,9 @@
 import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
 import { render,fireEvent } from '@testing-library/react'
-import Notify from 'components/Notify'
+import { MessagesContextProvider } from 'context/ContextMessages'
+import Notify from 'components/Notify/Notify'
+import useNotify from 'hooks/useNotify'
 
 describe('<Notify />' , () => {
     const message = 'This is a message'
@@ -11,9 +13,16 @@ describe('<Notify />' , () => {
     let component
 
     beforeEach(()=>{
+        const {updateNotify} = useNotify()
+
         component = render(
-            <Notify message = {message} setMessage = {mockHandler}/>
-        )
+            <MessagesContextProvider>
+                <Notify/>
+                {
+                    updateNotify(message)
+                }
+            </MessagesContextProvider>
+        );    
     })
 
     test('renders content',()=>{
@@ -31,6 +40,7 @@ describe('<Notify />' , () => {
         fireEvent.click(button)
     
         expect(mockHandler.mock.calls).toHaveLength(1)
+        expect(component.container).not.toHaveTextContent(message)
     })
     
 })
