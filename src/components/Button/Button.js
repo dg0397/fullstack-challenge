@@ -1,11 +1,12 @@
 import React from 'react'
+import { Button } from 'components/Button/styles'
 
-const Button = ({handleClick,text}) => {
+const ButtonContainer = ({handleClick,text,typeBtn}) => {
     return (
-        <button onClick = {handleClick} className="btn">
+        <Button onClick = {handleClick} className="btn" typeBtn = {typeBtn}>
             {text}
-        </button>
+        </Button>
     )
 }
 
-export default Button
+export default ButtonContainer

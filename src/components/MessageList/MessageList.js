@@ -2,21 +2,22 @@ import React from 'react'
 import ListHeader from 'components/ListHeader/ListHeader'
 import Message from 'components/Message/Message'
 import useGlobalMessages from 'hooks/useGlobalMessages'
+import { MessageList } from './styles'
 
-const MessageList = ({ id, type }) => {
+const MessageListComponent = ({ id, type }) => {
     const {messagesToTheList} = useGlobalMessages({type:id})
     return (
-        <div className = 'message-list'>
+        <MessageList type = {type}>
             <ListHeader id = {id} type = {type} count = {messagesToTheList.length} />
             {
-                messagesToTheList.map( (message,index) => {
+                messagesToTheList.map( ({message,priority}) => {
                     return ( 
-                        <Message id = {index} message = {message} key = {index}/>
+                        <Message message = {message} key = {message} priority = {priority}/>
                     )
                 })
             }
-        </div>
+        </MessageList>
     )
 }
 
-export default MessageList
+export default MessageListComponent

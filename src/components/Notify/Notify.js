@@ -1,8 +1,11 @@
 import React from 'react'
+
 import Button from 'components/Button/Button'
+import { Notify } from 'components/Notify/styles'
+
 import useNotify from 'hooks/useNotify'
 
-const Notify = () => {
+const NotifyComponent = () => {
     const {notify,updateNotify} = useNotify()
     console.log(notify)
 
@@ -11,14 +14,14 @@ const Notify = () => {
             {
                 notify 
                 && (
-                    <div id='notify'>
+                    <Notify notify = {notify}>
                         <p>{notify}</p>
-                        <Button handleClick = {()=>updateNotify('')} text = 'Clear'/>
-                    </div>
+                        <Button handleClick = {()=>updateNotify('')} text = 'Clear' typeBtn = 'notify'/>
+                    </Notify>
                 )
             }
         </>
     )
 }
 
-export default Notify
+export default NotifyComponent

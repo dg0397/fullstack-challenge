@@ -1,11 +1,12 @@
 import React from 'react'
+import { Header } from 'components/Header/styles'
 
-const Header = () => {
+const HeaderComponent = () => {
     return (
-        <div id = 'header'>
+        <Header>
             <h1>Coding Challenge</h1>
-        </div>
+        </Header>
     )
 }
 
-export default Header
+export default HeaderComponent
