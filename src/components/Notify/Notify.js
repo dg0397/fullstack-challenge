@@ -7,7 +7,7 @@ import useNotify from 'hooks/useNotify'
 
 const NotifyComponent = () => {
     const {notify,updateNotify} = useNotify()
-    console.log(notify)
+    //console.log(notify)
 
     return (
         <>
