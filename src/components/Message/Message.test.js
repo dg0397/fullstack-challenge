@@ -13,7 +13,7 @@ describe('<Message />', () => {
 
   beforeEach(() => {
     component = render(
-      <Message message={messageData} />
+      <Message message={messageData.message} priority={messageData.priority} />
     )
   })
 
@@ -21,16 +21,22 @@ describe('<Message />', () => {
     expect(component.container).toHaveTextContent(messageData.message)
   })
 
-  test('message has the correct color', () => {
+  test('renders styled message component', () => {
     const div = component.container.querySelector('.message')
 
-    expect(div).toHaveStyle('background-color : rgb(252, 231, 136)')
+    expect(div).toBeDefined()
   })
-  // test('Cleaning message btn', () =>{
-  //    const button = component.getByText('Clear')
-  //
-  //    fireEvent.click(button)
-  //
-  //    expect(mockHandler.mock.calls).toHaveLength(1)
-  // })
+
+  describe('Message renders Button Component', () => {
+    test('renders Button component', () => {
+      const div = component.container.querySelector('.btn')
+
+      expect(div).toBeDefined()
+    })
+    test('message has the correct button', () => {
+      const button = component.getByText('Clear')
+
+      expect(button).toBeDefined()
+    })
+  })
 })

@@ -9,7 +9,7 @@ const MessageComponent = ({ message, priority }) => {
   const { deleteMessage } = useMessages()
 
   return (
-    <Message priority={priority}>
+    <Message priority={priority} className='message'>
       <p>{message}</p>
       <Button handleClick={() => deleteMessage(message)} text='Clear' />
     </Message>
