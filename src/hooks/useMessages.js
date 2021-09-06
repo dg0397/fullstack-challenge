@@ -1,5 +1,6 @@
 import { useContext,useState } from "react"
 import Context from "context/ContextMessages"
+import apiServices from "services"
 
 export default function useMessages(){
     const {messages,setMessages} = useContext(Context)
@@ -14,11 +15,11 @@ export default function useMessages(){
       if(isApiStarted){
         console.log('stop')
         setApiStarted(false)
-        fetch("http://localhost:4000/end")
+        apiServices.turnOfApi()
       }else{
         console.log('start')
         setApiStarted(true)
-        fetch("http://localhost:4000/start")
+        apiServices.startApi()
       }
     }
     const deleteAllMessages = () => setMessages([])
