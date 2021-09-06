@@ -8,17 +8,22 @@ export function MessagesContextProvider ({ children }) {
   const [notify, setNotify] = useState('')
 
   useEffect(() => {
-    new window.EventSource('http://localhost:4000/sse').onmessage = function (event) {
-      const message = JSON.parse(event.data)
-      const { message: text, priority } = message
-      if (priority === 1) {
-        setNotify(text)
+    Promise.resolve(
+      typeof window.EventSource !== 'undefined' ? window.EventSource : import('event-source-polyfill')
+    ).then(() => {
+      new window.EventSource('http://localhost:4000/sse').onmessage = function (event) {
+        const message = JSON.parse(event.data)
+        const { message: text, priority } = message
+        if (priority === 1) {
+          setNotify(text)
+        }
+        setMessages(prevState => {
+          return [...prevState, message]
+        })
       }
-      setMessages(prevState => {
-        return [...prevState, message]
-      })
-    }
-    apiServices.startApi()
+    }).then(() => {
+      apiServices.startApi()
+    })
     console.log('stating app')
   }, [])
 
