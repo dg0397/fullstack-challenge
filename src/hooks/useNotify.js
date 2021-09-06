@@ -8,9 +8,9 @@ const useNotify = () => {
     useEffect(()=>{
       if(notify){
         const t = window.setTimeout( () => setNotify('') ,TIME*1000)
-        //for(let i = 0; i< t ; i++){
-        //  clearTimeout(i)
-        //}
+        for(let i = 0; i< t ; i++){
+          clearTimeout(i)
+        }
       }
     },[notify])
 

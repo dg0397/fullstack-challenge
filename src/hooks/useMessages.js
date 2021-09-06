@@ -2,7 +2,7 @@ import { useContext,useState } from "react"
 import Context from "context/ContextMessages"
 
 export default function useMessages(){
-    const {messages,setMessages,api} = useContext(Context)
+    const {messages,setMessages} = useContext(Context)
     const [isApiStarted,setApiStarted] = useState(true)
     
     const deleteMessage = (messageToDelete) => {
@@ -14,11 +14,11 @@ export default function useMessages(){
       if(isApiStarted){
         console.log('stop')
         setApiStarted(false)
-        api.stop()
+        fetch("http://localhost:4000/end")
       }else{
         console.log('start')
         setApiStarted(true)
-        api.start()
+        fetch("http://localhost:4000/start")
       }
     }
     const deleteAllMessages = () => setMessages([])
