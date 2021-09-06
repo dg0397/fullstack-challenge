@@ -6,7 +6,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom"
+    "test": "react-scripts test --env=jsdom",
+    "lint": "npx standard --fix"
   },
   "author": "simplideco.com",
   "license": "MIT",
@@ -22,7 +23,8 @@
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^12.0.0"
+    "@testing-library/react": "^12.0.0",
+    "standard": "^16.0.3"
   },
   "browserslist": {
     "production": [
@@ -41,5 +43,8 @@
       "**/src/**/*.js",
       "!**/__tests__/**"
     ]
+  },
+  "standard": {
+    "env": [ "jest" ]
   }
 }

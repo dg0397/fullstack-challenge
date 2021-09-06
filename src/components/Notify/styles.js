@@ -1,5 +1,5 @@
-import styled from "@emotion/styled";
-import { keyframes } from "@emotion/react";
+import styled from '@emotion/styled'
+import { keyframes } from '@emotion/react'
 
 const entry = keyframes`
   from {
@@ -9,9 +9,9 @@ const entry = keyframes`
   to {
     opacity: 1;
   }
-`;
+`
 
-const out =  keyframes`
+const out = keyframes`
     from {
         opacity: 1;
     }
@@ -36,7 +36,7 @@ export const Notify = styled.div`
     border-radius: 10px;
     padding: 1rem;
     color: white;
-    animation: ${({notify}) => notify ? entry : out} .5s ease-in;
+    animation: ${({ notify }) => notify ? entry : out} .5s ease-in;
 
     & p{
         width: 65%;

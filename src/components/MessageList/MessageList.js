@@ -5,19 +5,19 @@ import useGlobalMessages from 'hooks/useGlobalMessages'
 import { MessageList } from './styles'
 
 const MessageListComponent = ({ id, type }) => {
-    const {messagesToTheList} = useGlobalMessages({type:id})
-    return (
-        <MessageList type = {type}>
-            <ListHeader id = {id} type = {type} count = {messagesToTheList.length} />
-            {
-                messagesToTheList.map( ({message,priority}) => {
-                    return ( 
-                        <Message message = {message} key = {message} priority = {priority}/>
-                    )
+  const { messagesToTheList } = useGlobalMessages({ type: id })
+  return (
+    <MessageList type={type}>
+      <ListHeader id={id} type={type} count={messagesToTheList.length} />
+      {
+                messagesToTheList.map(({ message, priority }) => {
+                  return (
+                    <Message message={message} key={message} priority={priority} />
+                  )
                 })
             }
-        </MessageList>
-    )
+    </MessageList>
+  )
 }
 
 export default MessageListComponent

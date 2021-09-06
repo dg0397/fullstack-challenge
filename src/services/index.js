@@ -1,10 +1,10 @@
 const baseUrl = 'http://localhost:4000/'
 
 const startApi = () => {
-    fetch(`${baseUrl}start`)
+  window.fetch(`${baseUrl}start`)
 }
 const turnOfApi = () => {
-    fetch(`${baseUrl}end`)
+  window.fetch(`${baseUrl}end`)
 }
 
 const apiServices = {
