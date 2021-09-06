@@ -23,14 +23,14 @@ const out = keyframes`
 
 export const Notify = styled.div`
     position: absolute;
-    top: 2rem;
+    top: .75rem;
     left: 0;
     right: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 80%;
-    max-width: 350px;
+    max-width: 380px;
     margin: 0 auto 1rem auto;
     background-color: rgb(244, 67, 54);
     border-radius: 10px;
