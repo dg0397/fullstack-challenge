@@ -13,11 +13,9 @@ export default function useMessages () {
   }
   const switchApp = () => {
     if (isApiStarted) {
-      console.log('stop')
       setApiStarted(false)
       apiServices.turnOfApi()
     } else {
-      console.log('start')
       setApiStarted(true)
       apiServices.startApi()
     }
