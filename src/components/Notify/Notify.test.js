@@ -1,46 +1,50 @@
 import React from 'react'
 import '@testing-library/jest-dom/extend-expect'
-import { render,fireEvent } from '@testing-library/react'
-import { MessagesContextProvider } from 'context/ContextMessages'
+import { render } from '@testing-library/react'
+
+import Context, { MessagesContextProvider } from 'context/ContextMessages'
+
 import Notify from 'components/Notify/Notify'
-import useNotify from 'hooks/useNotify'
 
-describe('<Notify />' , () => {
-    const message = 'This is a message'
+describe('<Notify />', () => {
+  const message = 'This is a message'
 
-    const mockHandler = jest.fn()
+  let component
 
-    let component
+  beforeEach(() => {
+    component = render(
+      <MessagesContextProvider>
+        <Context.Consumer>
+          {
+            value => {
+              value.setNotify(message)
+              return <Notify />
+            }
+          }
+        </Context.Consumer>
+      </MessagesContextProvider>
+    )
+  })
 
-    beforeEach(()=>{
-        const {updateNotify} = useNotify()
+  test('renders content', () => {
+    expect(component.container).toHaveTextContent(message)
+  })
+  test('renders styled notify component', () => {
+    const div = component.container.querySelector('#notify')
 
-        component = render(
-            <MessagesContextProvider>
-                <Notify/>
-                {
-                    updateNotify(message)
-                }
-            </MessagesContextProvider>
-        );    
+    expect(div).toBeDefined()
+  })
+
+  describe('Notify renders Button Component', () => {
+    test('renders Button component', () => {
+      const div = component.container.querySelector('.btn')
+
+      expect(div).toBeDefined()
     })
+    test('Message has the correct button', () => {
+      const button = component.getByText('Clear')
 
-    test('renders content',()=>{
-        expect(component.container).toHaveTextContent(message)
+      expect(button).toBeDefined()
     })
-
-    //test('message has the correct color', () => {
-    //    const div = component.container.querySelector('.message')
-//
-    //    expect(div).toHaveStyle('background-color : rgb(252, 231, 136)')
-    //})
-    test('Cleaning message btn', () =>{
-        const button = component.getByText('Clear')
-        
-        fireEvent.click(button)
-    
-        expect(mockHandler.mock.calls).toHaveLength(1)
-        expect(component.container).not.toHaveTextContent(message)
-    })
-    
+  })
 })

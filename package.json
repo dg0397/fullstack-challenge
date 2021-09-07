@@ -6,7 +6,9 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom"
+    "test": "react-scripts test --env=jsdom",
+    "lint": "npx standard --fix",
+    "cypress:open": "cypress open"
   },
   "author": "simplideco.com",
   "license": "MIT",
@@ -14,6 +16,7 @@
     "@emotion/react": "^11.4.1",
     "@emotion/styled": "^11.3.0",
     "@material-ui/core": "^3.8.2",
+    "event-source-polyfill": "^1.0.25",
     "faker": "^5.5.3",
     "lodash": "^4.17.2",
     "react": "^17.0.2",
@@ -22,7 +25,9 @@
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^12.0.0"
+    "@testing-library/react": "^12.0.0",
+    "cypress": "^8.3.1",
+    "standard": "^16.0.3"
   },
   "browserslist": {
     "production": [
@@ -41,5 +46,11 @@
       "**/src/**/*.js",
       "!**/__tests__/**"
     ]
+  },
+  "standard": {
+    "env": [
+      "jest","browser", "mocha"
+    ],
+    "globals": ["cy", "Cypress", "expect", "assert"]  
   }
 }

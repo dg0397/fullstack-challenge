@@ -1,5 +1,5 @@
-import styled  from "@emotion/styled";
-import { keyframes } from "@emotion/react";
+import styled from '@emotion/styled'
+import { keyframes } from '@emotion/react'
 const entry = keyframes`
   from {
     opacity: 0;
@@ -8,7 +8,7 @@ const entry = keyframes`
   to {
     opacity: 1;
   }
-`;
+`
 
 export const Message = styled.div`
     display: none;
@@ -26,7 +26,7 @@ export const Message = styled.div`
         animation: ${entry} .75s ease-in;
 
 
-        background-color: ${({priority}) => priority === 1 ? 'rgb(245, 98, 54)' : priority === 2 ? "rgb(252, 231, 136)" : "rgb(136, 252, 163)"};
+        background-color: ${({ priority }) => priority === 1 ? 'rgb(245, 98, 54)' : priority === 2 ? 'rgb(252, 231, 136)' : 'rgb(136, 252, 163)'};
 
     }
 `

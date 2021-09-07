@@ -6,22 +6,21 @@ import { Notify } from 'components/Notify/styles'
 import useNotify from 'hooks/useNotify'
 
 const NotifyComponent = () => {
-    const {notify,updateNotify} = useNotify()
-    //console.log(notify)
+  const { notify, updateNotify } = useNotify()
 
-    return (
-        <>
-            {
-                notify 
-                && (
-                    <Notify notify = {notify}>
-                        <p>{notify}</p>
-                        <Button handleClick = {()=>updateNotify('')} text = 'Clear' typeBtn = 'notify'/>
-                    </Notify>
-                )
-            }
-        </>
-    )
+  return (
+    <>
+      {
+        notify &&
+        (
+          <Notify notify={notify} id='notify'>
+            <p>{notify}</p>
+            <Button handleClick={() => updateNotify('')} text='Clear' typeBtn='notify' />
+          </Notify>
+        )
+      }
+    </>
+  )
 }
 
 export default NotifyComponent

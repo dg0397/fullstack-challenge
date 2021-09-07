@@ -3,35 +3,40 @@ import '@testing-library/jest-dom/extend-expect'
 import { render } from '@testing-library/react'
 import Message from 'components/Message/Message'
 
-describe('<Message />' , () => {
-    const messageData = {
-        message: 'This is a message',
-        priority: 2
-    }
+describe('<Message />', () => {
+  const messageData = {
+    message: 'This is a message',
+    priority: 2
+  }
 
-    let component
+  let component
 
-    beforeEach(()=>{
-        component = render(
-            <Message message = {messageData}/>
-        )
+  beforeEach(() => {
+    component = render(
+      <Message message={messageData.message} priority={messageData.priority} />
+    )
+  })
+
+  test('renders content', () => {
+    expect(component.container).toHaveTextContent(messageData.message)
+  })
+
+  test('renders styled message component', () => {
+    const div = component.container.querySelector('.message')
+
+    expect(div).toBeDefined()
+  })
+
+  describe('Message renders Button Component', () => {
+    test('renders Button component', () => {
+      const div = component.container.querySelector('.btn')
+
+      expect(div).toBeDefined()
     })
+    test('Message has the correct button', () => {
+      const button = component.getByText('Clear')
 
-    test('renders content',()=>{
-        expect(component.container).toHaveTextContent(messageData.message)
+      expect(button).toBeDefined()
     })
-
-    test('message has the correct color', () => {
-        const div = component.container.querySelector('.message')
-
-        expect(div).toHaveStyle('background-color : rgb(252, 231, 136)')
-    })
-    //test('Cleaning message btn', () =>{
-    //    const button = component.getByText('Clear')
-    //    
-    //    fireEvent.click(button)
-    //
-    //    expect(mockHandler.mock.calls).toHaveLength(1)
-    //})
-    
+  })
 })

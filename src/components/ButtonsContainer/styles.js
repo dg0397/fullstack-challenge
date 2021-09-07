@@ -1,4 +1,4 @@
-import styled  from "@emotion/styled";
+import styled from '@emotion/styled'
 
 export const ButtonsContainer = styled.div`
     display: flex;
@@ -8,4 +8,4 @@ export const ButtonsContainer = styled.div`
     margin: 0 auto;
     padding: .5rem;
     margin-bottom: 1rem;
-` 
+`
