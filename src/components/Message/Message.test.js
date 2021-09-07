@@ -33,7 +33,7 @@ describe('<Message />', () => {
 
       expect(div).toBeDefined()
     })
-    test('message has the correct button', () => {
+    test('Message has the correct button', () => {
       const button = component.getByText('Clear')
 
       expect(button).toBeDefined()

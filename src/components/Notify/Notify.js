@@ -12,14 +12,14 @@ const NotifyComponent = () => {
   return (
     <>
       {
-                notify &&
-                (
-                  <Notify notify={notify}>
-                    <p>{notify}</p>
-                    <Button handleClick={() => updateNotify('')} text='Clear' typeBtn='notify' />
-                  </Notify>
-                )
-            }
+        notify &&
+        (
+          <Notify notify={notify} id='notify'>
+            <p>{notify}</p>
+            <Button handleClick={() => updateNotify('')} text='Clear' typeBtn='notify' />
+          </Notify>
+        )
+      }
     </>
   )
 }
