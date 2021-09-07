@@ -7,7 +7,7 @@ import { MessageList } from './styles'
 const MessageListComponent = ({ id, type }) => {
   const { messagesToTheList } = useGlobalMessages({ type: id })
   return (
-    <MessageList type={type}>
+    <MessageList type={type} className = "messageList">
       <ListHeader id={id} type={type} count={messagesToTheList.length} />
       {
                 messagesToTheList.map(({ message, priority }) => {

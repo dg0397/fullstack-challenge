@@ -7,7 +7,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "lint": "npx standard --fix"
+    "lint": "npx standard --fix",
+    "cypress:open": "cypress open"
   },
   "author": "simplideco.com",
   "license": "MIT",
@@ -25,6 +26,7 @@
   "devDependencies": {
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^12.0.0",
+    "cypress": "^8.3.1",
     "standard": "^16.0.3"
   },
   "browserslist": {
